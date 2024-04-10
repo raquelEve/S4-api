@@ -1,0 +1,36 @@
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    height: 100vh; /* Adjusts the body height to 100% of the window */
+    margin: 0; /* Removes the default margin */
+    background: #eee;
+}
+#main-box{
+    box-shadow: 10px 10px 5px lightblue;
+    max-width: 400px;
+    min-height: 260px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    border: 1px solid lightblue;
+    text-align: center;
+    border-radius: 10px;
+    background-color: #f5eacd;
+}
+#main-box h1{
+    font-family: 'Courier New', Courier, monospace;
+}
+#main-box p{
+    font-style: italic;
+}
+#main-box button{
+    min-width: 200px;
+    margin-top: 20px;
+    padding: 5px;
+    border:1px solid rgb(106, 199, 230);
+    border-radius: 5px;
+    background-color: lightblue;
+}

@@ -18,7 +18,7 @@ const displayRandomJoke = async (): Promise<void> => {
       console.log(data.joke);
       // If boxJoke exists, add a joke
       if (boxJoke) {
-        boxJoke.innerHTML = data.joke;
+        boxJoke.innerHTML = `" ${data.joke} "`;
       }
     })
     .catch((error) => {

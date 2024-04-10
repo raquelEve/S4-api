@@ -8,10 +8,28 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-//  la función al cargar la página
+//* the array with voting report
+const reportJoke = [];
+//*the variable that conforms all the info of the vote
+const currentJoke = {};
+//* call the function on load
 window.onload = function () {
     displayRandomJoke();
 };
+//* function that manages the addRate process
+const handleAddRate = (vote) => {
+    currentJoke.id; //updated in displayRandomJoke
+    currentJoke.score = vote;
+    currentJoke.date = dateIso();
+};
+const handleNext = () => {
+    if (currentJoke.score !== 0) {
+        addRate();
+    }
+    displayRandomJoke();
+    resertCurrentJoke();
+};
+//* function that call the joke api
 const displayRandomJoke = () => __awaiter(void 0, void 0, void 0, function* () {
     let boxJoke = document.getElementById("box-joke");
     fetch("https://icanhazdadjoke.com/", {
@@ -22,11 +40,11 @@ const displayRandomJoke = () => __awaiter(void 0, void 0, void 0, function* () {
     })
         .then((response) => response.json())
         .then((data) => {
-        console.log(data);
-        console.log(data.joke);
-        // If boxJoke exists, add a joke
+        // If boxJoke exists => add a joke
         if (boxJoke) {
             boxJoke.innerHTML = `" ${data.joke} "`;
+            currentJoke.id = data.id; // we update the id on each call
+            console.log("current en api", currentJoke);
         }
     })
         .catch((error) => {
@@ -36,4 +54,20 @@ const displayRandomJoke = () => __awaiter(void 0, void 0, void 0, function* () {
         }
     });
 });
+//* add Rate in array
+const addRate = () => {
+    //push in array
+    reportJoke.push(Object.assign({}, currentJoke));
+};
+//* convert the data in a ISO
+const dateIso = () => {
+    let date = new Date();
+    return date.toISOString();
+};
+//* resert currentJoke values
+const resertCurrentJoke = () => {
+    currentJoke.id; //updated in displayRandomJoke
+    currentJoke.score = 0;
+    currentJoke.date = "";
+};
 //# sourceMappingURL=index.js.map

@@ -1,1 +1,1 @@
-export declare function hello(who?: string): string;
+declare const displayRandomJoke: () => Promise<void>;

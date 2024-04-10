@@ -42,6 +42,15 @@ $ npx tsc -w
    "compilerOptions": {
    "outDir": "./dist"
    }
+
+6. Configure TypeScript to recognize global objects in the browser in the file the tsconfig.json
+{
+"compilerOptions": {
+"target": "es6",
+"lib": ["dom", "es2015"]
+}
+}
+
    <br>
 
 _start coding your TypeScript_

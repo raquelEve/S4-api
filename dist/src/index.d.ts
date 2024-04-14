@@ -15,3 +15,5 @@ declare const resertCurrentJoke: () => void;
 /************* CHUCK NORRIS JOKES */
 declare const displayChuckJoke: () => Promise<void>;
 declare const randomCall: () => void;
+/************* BUBBLES BACKGROUND */
+declare const randonBubble: () => void;

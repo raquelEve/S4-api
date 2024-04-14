@@ -11,14 +11,14 @@ const reportJoke: Array<Ivote> = [];
 //*the variable that conforms all the info of the vote
 const currentJoke: Ivote = { id: "", score: 0, date: "", source: "" };
 
-//* call the function on load
+//***  call the function on load */
 window.onload = function () {
   randomCall();
 };
 
 //* function that manages the fillRate process
 const handleFillRate = (vote: number) => {
-  currentJoke.id; //updated in displayDadJoke
+  currentJoke.id; //updated in displayDadJoke & chuck
   currentJoke.score = vote;
   currentJoke.date = dateIso();
 };
@@ -30,6 +30,7 @@ const handleNext = () => {
   }
   randomCall();
   resertCurrentJoke();
+  randonBubble();
 };
 
 //* function that call the joke api
@@ -74,9 +75,10 @@ const dateIso = (): string => {
 
 //* resert currentJoke values
 const resertCurrentJoke = () => {
-  currentJoke.id; //updated in displayDadJoke
+  currentJoke.id; //updated in displayDadJoke & chuck
   currentJoke.score = 0;
   currentJoke.date = "";
+  currentJoke.source = "";
 };
 
 /************* CHUCK NORRIS JOKES */
@@ -107,10 +109,52 @@ const displayChuckJoke = async (): Promise<void> => {
 
 //* call an joke api depends of a random number
 const randomCall = (): void => {
-  let num = Math.floor(Math.random() * 2) + 1;
+  let num: number = Math.floor(Math.random() * 2) + 1;
+
   if (num % 2 == 0) {
     displayDadJoke();
   } else {
     displayChuckJoke();
   }
+};
+
+/************* BUBBLES BACKGROUND */
+
+const randonBubble = () => {
+  // getEelementByTagName returns an array
+  let body: HTMLElement = document.getElementsByTagName("body")[0];
+  let currentClass: string = body.className.split(" ")[0];
+  let num: number = Math.floor(Math.random() * 6) + 1;
+
+  //apply the random class
+  body.classList.remove(currentClass);
+  body.classList.add(`bubble-${num}`);
+
+  let miniA: HTMLElement | null = document.getElementById("posA");
+  let miniB: HTMLElement | null = document.getElementById("posB");
+
+  if (miniA) {
+    if (miniA.classList.contains("mini-bubble-1")) {
+      console.log("cambiamos de 1 a 2");
+      miniA.classList.remove("mini-bubble-1");
+      miniA.classList.add("mini-bubble-2");
+    } else {
+      console.log("cambiamos de 2 a 1");
+      miniA.classList.remove("mini-bubble-2");
+      miniA.classList.add("mini-bubble-1");
+    }
+  }
+  if (miniB) {
+    console.log("b", miniB);
+    if (miniB.classList.contains("mini-bubble-3")) {
+      console.log("cambiamos de 3 a 4");
+      miniB.classList.remove("mini-bubble-3");
+      miniB.classList.add("mini-bubble-4");
+    } else {
+      console.log("cambiamos de 4 a 3");
+      miniB.classList.remove("mini-bubble-4");
+      miniB.classList.add("mini-bubble-3");
+    }
+  }
+  console.log("---------------------");
 };

@@ -5,9 +5,10 @@ body{
     height: 100vh; /* Adjusts the body height to 100% of the window */
     margin: 0; /* Removes the default margin */
     background: #eee;
+    background-repeat: no-repeat;
+    background-size: 170%;
 }
 #main-box{
-    box-shadow: 10px 10px 5px lightblue;
     max-width: 400px;
     min-height: 260px;
     display: flex;
@@ -15,9 +16,7 @@ body{
     align-items: center;
     justify-content: space-between;
     padding: 20px;
-    border: 1px solid lightblue;
     text-align: center;
-    border-radius: 10px;
     background-color: #f5eacd;
 }
 #main-box h1{
@@ -32,22 +31,169 @@ body{
     margin: 0px 10px;
     border-radius: 50%;
     border: 0;
-    font-size: 16px;
+    font-size: 20px;
     background: transparent;
     cursor: pointer;
+    /* box-shadow: 1px 1px rgb(255, 200, 61); */
+    position: relative;
+    transition: transform 0.3s ease; /* Transición suave del transform */
+}
+.button-bar button:before {
+    content: '';
+    position: absolute;
+    top: 2px;
+    right: 0px;
+    bottom: 0;
+    left: 2px;
+    width:  calc( 100% - 2px);
+    height:  calc( 100% - 2px);
+    border-radius: 50%;
+    background-color: rgb(255, 200, 61);/* Color de fondo de ejemplo */
+    z-index: -1; /* Coloca el pseudo-elemento detrás del contenido */
 }
 .button-bar button:hover{
-    opacity: 0.5;
+    transform: translateY(-5px); /* Mueve el botón hacia arriba 5px al hacer hover */
 }
+.button-bar button:hover:before {
+    top: 3px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+}
+
 #main-box button.next-joke{
-    min-width: 200px;
+    min-width: 150px;
     margin-top: 20px;
     padding: 5px;
-    border:1px solid #6ac7e6;
-    border-radius: 5px;
-    background-color: lightblue;
-    cursor: pointer;
+    border:2px solid #000;
+    border-radius: 25px;
+    background-color: #ffc83d;
+    cursor: pointer;    
+    box-shadow: 3px 3px #ffc83d,  inset 2px 2px 0px 0px #6ac7e6; /*2 shadows*/
+    transition: box-shadow 0.2s ease; /* Transition */
 }
 #main-box button.next-joke:hover{
-    background: rgb(106, 199, 230);
+    /* background: #6ac7e6; */
+    box-shadow: -3px -3px #ffc83d, inset -2px -2px 0px 0px #6ac7e6; /* shadows in oposite side */
+}
+
+/******* main box svg background */
+#main-box{
+    background: none;
+}
+body{
+    background-position: center, center;   
+    background-repeat: no-repeat !important;
+}
+.bubble-1{
+    background-image:  url('./img/blob-haikei-1.svg');
+}
+.bubble-2{
+    background-image:  url('./img/blob-haikei-2.svg');
+}
+.bubble-3{
+    background-image:  url('./img/blob-haikei-3.svg');
+}
+.bubble-4{
+    background-image:  url('./img/blob-haikei-4.svg');
+}
+.bubble-5{
+    background-image:  url('./img/blob-haikei-5.svg');
+}
+.bubble-6{
+    background-image:  url('./img/blob-haikei-6.svg');
+}
+
+.minib-pos{ 
+    position: absolute;
+    width: 85px;
+    height: 85px;
+    background-position: center, center;   
+    background-repeat: no-repeat !important;
+    background-size: cover;
+}
+#posA{
+    display: none;
+    top: 20px;
+    right: 20px;
+}
+#posB{
+    display: none;
+    bottom: 20px;
+    left: 20px;
+}
+.mini-bubble-1{
+    background-image:  url('./img/mini-blob-1.svg');
+}
+.mini-bubble-2{
+    background-image:  url('./img/mini-blob-2.svg');
+}
+.mini-bubble-3{
+    background-image:  url('./img/mini-blob-3.svg');
+}
+.mini-bubble-4{
+    background-image:  url('./img/mini-blob-4.svg');
+}
+
+/******* end main box svg background */
+
+
+
+/******************************[ MEDIAS ]*******************************************/
+
+/************************ ≥576px - SM */
+@media (min-width: 575.98px) { 
+ 
+    body{
+        background-size: auto;
+    }
+    #posA, #posB{
+        display: block;
+    }
+}
+
+
+/************************ ≥768px - MD */
+@media (min-width: 767.98px) {
+ 
+    .minib-pos{ 
+        width: 100px;
+        height: 100px;
+    }
+    #posA{
+        top: 40px;
+        right: 40px;
+    }
+    #posB{
+        bottom: 40px;
+        left: 40px;
+    }
+}
+
+
+/************************ ≥992px - LG */
+@media (min-width: 991.98px) {
+
+    .minib-pos{ 
+        width: 150px;
+        height: 150px;
+    }
+    #posA{
+        top: 50px;
+        right: 50px;
+    }
+    #posB{
+        bottom: 50px;
+        left: 50px;
+    }
+}
+
+/************************ ≥1200px - XL */
+@media (min-width: 1199.98px) {
+   
+}
+
+/************************ ≥1400px - XXL */
+@media (min-width: 1399.98px) {
+  
 }

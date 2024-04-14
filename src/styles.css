@@ -2,12 +2,15 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh; /* Adjusts the body height to 100% of the window */
-  margin: 0; /* Removes the default margin */
+  height: 100vh;
+  /* Adjusts the body height to 100% of the window */
+  margin: 0;
+  /* Removes the default margin */
   background: #eee;
   background-repeat: no-repeat;
   background-size: 170%;
 }
+
 #main-box {
   max-width: 400px;
   min-height: 260px;
@@ -19,12 +22,15 @@ body {
   text-align: center;
   background-color: #f5eacd;
 }
+
 #main-box h1 {
   font-family: "Courier New", Courier, monospace;
 }
+
 #main-box p {
   font-style: italic;
 }
+
 .button-bar button {
   width: auto;
   padding: 0px;
@@ -34,10 +40,10 @@ body {
   font-size: 20px;
   background: transparent;
   cursor: pointer;
-  /* box-shadow: 1px 1px rgb(255, 200, 61); */
   position: relative;
-  transition: transform 0.3s ease; /* Transición suave del transform */
+  transition: transform 0.3s ease;
 }
+
 .button-bar button:before {
   content: "";
   position: absolute;
@@ -48,14 +54,14 @@ body {
   width: calc(100% - 2px);
   height: calc(100% - 2px);
   border-radius: 50%;
-  background-color: rgb(255, 200, 61); /* Color de fondo de ejemplo */
-  z-index: -1; /* Coloca el pseudo-elemento detrás del contenido */
+  background-color: rgb(255, 200, 61);
+  z-index: -1;
 }
+
 .button-bar button:hover {
-  transform: translateY(
-    -5px
-  ); /* Mueve el botón hacia arriba 5px al hacer hover */
+  transform: translateY(-5px);
 }
+
 .button-bar button:hover:before {
   top: 3px;
   right: 0px;
@@ -73,40 +79,51 @@ body {
   cursor: pointer;
   box-shadow:
     3px 3px #ffc83d,
-    inset 2px 2px 0px 0px #6ac7e6; /*2 shadows*/
-  transition: all 0.2s ease; /* Transition */
+    inset 2px 2px 0px 0px #6ac7e6;
+  /*2 shadows*/
+  transition: all 0.2s ease;
+  /* Transition */
 }
+
 #main-box button.next-joke:hover {
   /* background: #6ac7e6; */
   box-shadow:
     -3px -3px #ffc83d,
-    inset -2px -2px 0px 0px #6ac7e6; /* shadows in oposite side */
+    inset -2px -2px 0px 0px #6ac7e6;
+  /* shadows in oposite side */
   transform: translateX(10px);
-} 
+}
 
 /******* main box svg background */
 #main-box {
   background: none;
 }
+
 body {
   background-position: center, center;
   background-repeat: no-repeat !important;
 }
+
 .bubble-1 {
   background-image: url("./img/blob-haikei-1.svg");
 }
+
 .bubble-2 {
   background-image: url("./img/blob-haikei-2.svg");
 }
+
 .bubble-3 {
   background-image: url("./img/blob-haikei-3.svg");
 }
+
 .bubble-4 {
   background-image: url("./img/blob-haikei-4.svg");
 }
+
 .bubble-5 {
   background-image: url("./img/blob-haikei-5.svg");
 }
+
 .bubble-6 {
   background-image: url("./img/blob-haikei-6.svg");
 }
@@ -119,25 +136,31 @@ body {
   background-repeat: no-repeat !important;
   background-size: cover;
 }
+
 #posA {
   display: none;
   top: 20px;
   right: 20px;
 }
+
 #posB {
   display: none;
   bottom: 20px;
   left: 20px;
 }
+
 .mini-bubble-1 {
   background-image: url("./img/mini-blob-1.svg");
 }
+
 .mini-bubble-2 {
   background-image: url("./img/mini-blob-2.svg");
 }
+
 .mini-bubble-3 {
   background-image: url("./img/mini-blob-3.svg");
 }
+
 .mini-bubble-4 {
   background-image: url("./img/mini-blob-4.svg");
 }
@@ -150,13 +173,16 @@ body {
   display: flex;
   align-items: center;
 }
+
 #box-weather #icon {
   border-right: 1px solid #000;
 }
+
 #box-weather #icon img {
   height: 25px;
   margin-right: 5px;
 }
+
 #box-weather #temp {
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   padding-left: 8px;
@@ -170,6 +196,7 @@ body {
   body {
     background-size: auto;
   }
+
   #posA,
   #posB {
     display: block;
@@ -182,10 +209,12 @@ body {
     width: 100px;
     height: 100px;
   }
+
   #posA {
     top: 40px;
     right: 40px;
   }
+
   #posB {
     bottom: 40px;
     left: 40px;
@@ -198,10 +227,12 @@ body {
     width: 150px;
     height: 150px;
   }
+
   #posA {
     top: 50px;
     right: 50px;
   }
+
   #posB {
     bottom: 50px;
     left: 50px;
@@ -209,9 +240,7 @@ body {
 }
 
 /************************ ≥1200px - XL */
-@media (min-width: 1199.98px) {
-}
+@media (min-width: 1199.98px) {}
 
 /************************ ≥1400px - XXL */
-@media (min-width: 1399.98px) {
-}
+@media (min-width: 1399.98px) {}

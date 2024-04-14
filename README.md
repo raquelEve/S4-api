@@ -73,3 +73,9 @@ function hello(who = world) {
 return `Hello ${who}! `;
 }
 exports.hello = hello;
+
+## Using the following apis:
+
+_"https://icanhazdadjoke.com/"
+_"https://api.chucknorris.io/jokes/random/"
+\_"https://api.openweathermap.org/"

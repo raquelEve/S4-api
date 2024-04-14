@@ -17,3 +17,6 @@ declare const displayChuckJoke: () => Promise<void>;
 declare const randomCall: () => void;
 /************* BUBBLES BACKGROUND */
 declare const randonBubble: () => void;
+/************* WEATHER API */
+declare const displayWeather: () => Promise<void>;
+declare const printWeather: (data: any) => void;

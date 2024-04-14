@@ -14,6 +14,7 @@ const currentJoke: Ivote = { id: "", score: 0, date: "", source: "" };
 //***  call the function on load */
 window.onload = function () {
   randomCall();
+  displayWeather();
 };
 
 //* function that manages the fillRate process
@@ -135,26 +136,49 @@ const randonBubble = () => {
 
   if (miniA) {
     if (miniA.classList.contains("mini-bubble-1")) {
-      console.log("cambiamos de 1 a 2");
       miniA.classList.remove("mini-bubble-1");
       miniA.classList.add("mini-bubble-2");
     } else {
-      console.log("cambiamos de 2 a 1");
       miniA.classList.remove("mini-bubble-2");
       miniA.classList.add("mini-bubble-1");
     }
   }
   if (miniB) {
-    console.log("b", miniB);
     if (miniB.classList.contains("mini-bubble-3")) {
-      console.log("cambiamos de 3 a 4");
       miniB.classList.remove("mini-bubble-3");
       miniB.classList.add("mini-bubble-4");
     } else {
-      console.log("cambiamos de 4 a 3");
       miniB.classList.remove("mini-bubble-4");
       miniB.classList.add("mini-bubble-3");
     }
   }
-  console.log("---------------------");
+};
+
+/************* WEATHER API */
+
+const displayWeather = async (): Promise<void> => {
+  const apiKey = "YOUR-API-KEY";
+  const city = "Barcelona";
+  let lat = "41.38879";
+  let lon = "2.15899";
+
+  const currentWeatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`;
+  fetch(currentWeatherUrl)
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(data);
+      printWeather(data);
+    })
+    .catch((error) => {
+      console.error("Error fetching current weather data:", error);
+    });
+};
+
+const printWeather = (data: any): void => {
+  let icon: HTMLElement | null = document.getElementById("icon");
+  let temp: HTMLElement | null = document.getElementById("temp");
+  let tempData = (data.main.temp - 273.15).toFixed(2); // Convert temperature to degrees Celsius and round to 2 decimal places.
+  let iconData = `<img src="https://openweathermap.org/img/wn/${data.weather[0].icon}.png" alt="Weather Icon">`; // Use an <img> tag to display the weather icon.
+  icon!.innerHTML = iconData;
+  temp!.innerHTML = tempData + " °C"; // Display temperature together with Celsius symbol
 };

@@ -19,19 +19,20 @@ window.onload = function () {
 };
 //* function that manages the fillRate process
 const handleFillRate = (vote) => {
-    currentJoke.id; //updated in displayDadJoke & chuck
+    //currentJoke.id; updated in displayDadJoke & chuck
     currentJoke.score = vote;
     currentJoke.date = dateIso();
 };
 //* function that manages the next process
-const handleNext = () => {
+const handleNext = () => __awaiter(void 0, void 0, void 0, function* () {
     if (currentJoke.score !== 0) {
         addRateInArr();
     }
-    randomCall();
-    resertCurrentJoke();
+    yield randomCall();
+    resetCurrentJoke();
     randonBubble();
-};
+});
+//* function that call the joke api
 //* function that call the joke api
 const displayDadJoke = () => __awaiter(void 0, void 0, void 0, function* () {
     let boxJoke = document.getElementById("box-joke");
@@ -69,8 +70,8 @@ const dateIso = () => {
     return date.toISOString();
 };
 //* resert currentJoke values
-const resertCurrentJoke = () => {
-    currentJoke.id; //updated in displayDadJoke & chuck
+const resetCurrentJoke = () => {
+    //currentJoke.id; updated in displayDadJoke & chuck
     currentJoke.score = 0;
     currentJoke.date = "";
     currentJoke.source = "";
@@ -99,15 +100,15 @@ const displayChuckJoke = () => __awaiter(void 0, void 0, void 0, function* () {
     });
 });
 //* call an joke api depends of a random number
-const randomCall = () => {
+const randomCall = () => __awaiter(void 0, void 0, void 0, function* () {
     let num = Math.floor(Math.random() * 2) + 1;
     if (num % 2 == 0) {
-        displayDadJoke();
+        yield displayDadJoke();
     }
     else {
-        displayChuckJoke();
+        yield displayChuckJoke();
     }
-};
+});
 /************* BUBBLES BACKGROUND */
 const randonBubble = () => {
     // getEelementByTagName returns an array
@@ -160,8 +161,10 @@ const displayWeather = () => __awaiter(void 0, void 0, void 0, function* () {
 const printWeather = (data) => {
     let icon = document.getElementById("icon");
     let temp = document.getElementById("temp");
-    let tempData = (data.main.temp - 273.15).toFixed(2); // Convert temperature to degrees Celsius and round to 2 decimal places.
-    let iconData = `<img src="https://openweathermap.org/img/wn/${data.weather[0].icon}.png" alt="Weather Icon">`; // Use an <img> tag to display the weather icon.
+    // Convert temperature to degrees Celsius and round to 2 decimal places.
+    let tempData = (data.main.temp - 273.15).toFixed(2);
+    // Use an <img> tag to display the weather icon.
+    let iconData = `<img src="https://openweathermap.org/img/wn/${data.weather[0].icon}.png" alt="Weather Icon">`;
     icon.innerHTML = iconData;
     temp.innerHTML = tempData + " °C"; // Display temperature together with Celsius symbol
 };

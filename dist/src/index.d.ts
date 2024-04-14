@@ -7,14 +7,14 @@ interface Ivote {
 declare const reportJoke: Array<Ivote>;
 declare const currentJoke: Ivote;
 declare const handleFillRate: (vote: number) => void;
-declare const handleNext: () => void;
+declare const handleNext: () => Promise<void>;
 declare const displayDadJoke: () => Promise<void>;
 declare const addRateInArr: () => void;
 declare const dateIso: () => string;
-declare const resertCurrentJoke: () => void;
+declare const resetCurrentJoke: () => void;
 /************* CHUCK NORRIS JOKES */
 declare const displayChuckJoke: () => Promise<void>;
-declare const randomCall: () => void;
+declare const randomCall: () => Promise<void>;
 /************* BUBBLES BACKGROUND */
 declare const randonBubble: () => void;
 /************* WEATHER API */

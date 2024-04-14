@@ -19,21 +19,22 @@ window.onload = function () {
 
 //* function that manages the fillRate process
 const handleFillRate = (vote: number) => {
-  currentJoke.id; //updated in displayDadJoke & chuck
+  //currentJoke.id; updated in displayDadJoke & chuck
   currentJoke.score = vote;
   currentJoke.date = dateIso();
 };
 
 //* function that manages the next process
-const handleNext = () => {
+const handleNext = async () => {
   if (currentJoke.score !== 0) {
     addRateInArr();
   }
-  randomCall();
-  resertCurrentJoke();
+  await randomCall();
+  resetCurrentJoke();
   randonBubble();
 };
 
+//* function that call the joke api
 //* function that call the joke api
 const displayDadJoke = async (): Promise<void> => {
   let boxJoke: HTMLElement | null = document.getElementById("box-joke");
@@ -75,8 +76,8 @@ const dateIso = (): string => {
 };
 
 //* resert currentJoke values
-const resertCurrentJoke = () => {
-  currentJoke.id; //updated in displayDadJoke & chuck
+const resetCurrentJoke = () => {
+  //currentJoke.id; updated in displayDadJoke & chuck
   currentJoke.score = 0;
   currentJoke.date = "";
   currentJoke.source = "";
@@ -109,13 +110,13 @@ const displayChuckJoke = async (): Promise<void> => {
 };
 
 //* call an joke api depends of a random number
-const randomCall = (): void => {
-  let num: number = Math.floor(Math.random() * 2) + 1;
+const randomCall = async (): Promise<void> => {
+  let num = Math.floor(Math.random() * 2) + 1;
 
   if (num % 2 == 0) {
-    displayDadJoke();
+    await displayDadJoke();
   } else {
-    displayChuckJoke();
+    await displayChuckJoke();
   }
 };
 
@@ -177,8 +178,12 @@ const displayWeather = async (): Promise<void> => {
 const printWeather = (data: any): void => {
   let icon: HTMLElement | null = document.getElementById("icon");
   let temp: HTMLElement | null = document.getElementById("temp");
-  let tempData = (data.main.temp - 273.15).toFixed(2); // Convert temperature to degrees Celsius and round to 2 decimal places.
-  let iconData = `<img src="https://openweathermap.org/img/wn/${data.weather[0].icon}.png" alt="Weather Icon">`; // Use an <img> tag to display the weather icon.
+
+  // Convert temperature to degrees Celsius and round to 2 decimal places.
+  let tempData = (data.main.temp - 273.15).toFixed(2);
+  // Use an <img> tag to display the weather icon.
+  let iconData = `<img src="https://openweathermap.org/img/wn/${data.weather[0].icon}.png" alt="Weather Icon">`;
+
   icon!.innerHTML = iconData;
   temp!.innerHTML = tempData + " °C"; // Display temperature together with Celsius symbol
 };

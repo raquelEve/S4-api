@@ -1,13 +1,17 @@
 interface Ivote {
-    id?: string;
-    score?: number;
-    date?: string;
+    id: string;
+    score: number;
+    date: string;
+    source: string;
 }
 declare const reportJoke: Array<Ivote>;
 declare const currentJoke: Ivote;
-declare const handleAddRate: (vote: number) => void;
+declare const handleFillRate: (vote: number) => void;
 declare const handleNext: () => void;
-declare const displayRandomJoke: () => Promise<void>;
-declare const addRate: () => void;
+declare const displayDadJoke: () => Promise<void>;
+declare const addRateInArr: () => void;
 declare const dateIso: () => string;
 declare const resertCurrentJoke: () => void;
+/************* CHUCK NORRIS JOKES */
+declare const displayChuckJoke: () => Promise<void>;
+declare const randomCall: () => void;

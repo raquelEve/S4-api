@@ -11,26 +11,27 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 //* the array with voting report
 const reportJoke = [];
 //*the variable that conforms all the info of the vote
-const currentJoke = {};
+const currentJoke = { id: "", score: 0, date: "", source: "" };
 //* call the function on load
 window.onload = function () {
-    displayRandomJoke();
+    randomCall();
 };
-//* function that manages the addRate process
-const handleAddRate = (vote) => {
-    currentJoke.id; //updated in displayRandomJoke
+//* function that manages the fillRate process
+const handleFillRate = (vote) => {
+    currentJoke.id; //updated in displayDadJoke
     currentJoke.score = vote;
     currentJoke.date = dateIso();
 };
+//* function that manages the next process
 const handleNext = () => {
     if (currentJoke.score !== 0) {
-        addRate();
+        addRateInArr();
     }
-    displayRandomJoke();
+    randomCall();
     resertCurrentJoke();
 };
 //* function that call the joke api
-const displayRandomJoke = () => __awaiter(void 0, void 0, void 0, function* () {
+const displayDadJoke = () => __awaiter(void 0, void 0, void 0, function* () {
     let boxJoke = document.getElementById("box-joke");
     fetch("https://icanhazdadjoke.com/", {
         method: "GET",
@@ -44,6 +45,7 @@ const displayRandomJoke = () => __awaiter(void 0, void 0, void 0, function* () {
         if (boxJoke) {
             boxJoke.innerHTML = `" ${data.joke} "`;
             currentJoke.id = data.id; // we update the id on each call
+            currentJoke.source = "dad";
             console.log("current en api", currentJoke);
         }
     })
@@ -55,7 +57,7 @@ const displayRandomJoke = () => __awaiter(void 0, void 0, void 0, function* () {
     });
 });
 //* add Rate in array
-const addRate = () => {
+const addRateInArr = () => {
     //push in array
     reportJoke.push(Object.assign({}, currentJoke));
 };
@@ -66,8 +68,41 @@ const dateIso = () => {
 };
 //* resert currentJoke values
 const resertCurrentJoke = () => {
-    currentJoke.id; //updated in displayRandomJoke
+    currentJoke.id; //updated in displayDadJoke
     currentJoke.score = 0;
     currentJoke.date = "";
+};
+/************* CHUCK NORRIS JOKES */
+const displayChuckJoke = () => __awaiter(void 0, void 0, void 0, function* () {
+    let boxJoke = document.getElementById("box-joke");
+    fetch("https://api.chucknorris.io/jokes/random", {
+        method: "GET",
+    })
+        .then((response) => response.json())
+        .then((data) => {
+        // If boxJoke exists => add a joke
+        if (boxJoke) {
+            boxJoke.innerHTML = `" ${data.value} "`;
+            currentJoke.id = data.id; // we update the id on each call
+            currentJoke.source = "chuck";
+            console.log("current en api", currentJoke);
+        }
+    })
+        .catch((error) => {
+        console.error("Error fetching joke:", error);
+        if (boxJoke) {
+            boxJoke.innerHTML = "no jokes available";
+        }
+    });
+});
+//* call an joke api depends of a random number
+const randomCall = () => {
+    let num = Math.floor(Math.random() * 2) + 1;
+    if (num % 2 == 0) {
+        displayDadJoke();
+    }
+    else {
+        displayChuckJoke();
+    }
 };
 //# sourceMappingURL=index.js.map

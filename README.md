@@ -44,13 +44,14 @@ $ npx tsc -w
    }
 
 6. Configure TypeScript to recognize global objects in the browser in the file the tsconfig.json
+````
 {
-"compilerOptions": {
-"target": "es6",
-"lib": ["dom", "es2015"]
+   "compilerOptions": {
+      "target": "es6",
+      "lib": ["dom", "es2015"]
+   }
 }
-}
-
+````
    <br>
 
 _start coding your TypeScript_
@@ -64,18 +65,18 @@ return `Hello ${who}! `;
 }
 
 ## The output in javascript should be:
-
+```
 "use strict";
 Object.defineProperty(exports, "\_\_esModule", { value: true });
 exports.hello = void 0;
 const world = 'world';
 function hello(who = world) {
-return `Hello ${who}! `;
+   return `Hello ${who}! `;
 }
 exports.hello = hello;
-
+```
 ## Using the following apis:
 
-_"https://icanhazdadjoke.com/"
-_"https://api.chucknorris.io/jokes/random/"
-\_"https://api.openweathermap.org/"
++ https://icanhazdadjoke.com/
++ https://api.chucknorris.io/jokes/random/
++ https://api.openweathermap.org/

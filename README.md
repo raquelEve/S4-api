@@ -54,16 +54,16 @@ $ npx tsc -w
 ````
    <br>
 
-_start coding your TypeScript_
+# start coding your TypeScript:
 
 ## test code in your ts file
-
+```
 const world = 'world';
 
 export function hello(who: string = world): string {
 return `Hello ${who}! `;
 }
-
+```
 ## The output in javascript should be:
 ```
 "use strict";
